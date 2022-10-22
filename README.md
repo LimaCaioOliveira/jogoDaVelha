@@ -12,8 +12,13 @@
 </p><br>
 
 <h3 align=center>Objetivo</h3>
-<p align=center> Criar um jogo no estilo jogo da velha para dois jogadores, onde cada um escolhe entre as duas peças utilizadas X e O, após a escolha o programa escolhe aleatóriamente qual a peça irá jogar primeiro. O objetivo de vitória do jogo consiste em alinhar 3 peças idênticas nos espaços de 3x3 fornecidos pela GUI.</p>
+<p> Criar um jogo no estilo jogo da velha para dois jogadores, onde cada um escolhe entre as duas peças utilizadas X e O, após a escolha das peças o programa escolhe aleatóriamente qual das duas jogará primeiro. O objetivo de vitória do jogo consiste em alinhar 3 peças idênticas nos espaços de 3x3 fornecidos pela GUI.</p>
 <h3 align=center>Roadmap</h3>
+- [x] Criar Main Class e Aleatóriedade na escolha do primeiro jogador;<br>
+- [x] Criar e customizar a GUI, painél e botões;<br>
+- [x] Criar a ação dos jogadores;<br>
+- [x] Criar os métodos de vitória dos jogadores;<br>
+- [x] Criar um README dahora!😎<br>
 
 <h3 align=center>Tecnologias</h3>
 
