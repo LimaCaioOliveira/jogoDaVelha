@@ -39,9 +39,19 @@ public class JogoDaVelha implements ActionListener{
         painel_titulo.setLayout(new BorderLayout());
         painel_titulo.setBounds(0,0,800,100);
 
-        //criando e customizando o botao
+        //criando e customizando o painel de botao
         painel_botao.setLayout(new GridLayout(3,3));
         painel_botao.setBackground(new Color(150,150,150));
+
+        //criando o for loop para os botoes de 1 a 9 e criando os botoes
+        for(int i = 0; i<9; i++){
+            botoes[i] = new JButton();
+            painel_botao.add(botoes[i]); //adicionando os botoes ao painel
+            botoes[i].setFont(new Font("MV Boli", Font.BOLD, 120));
+            botoes[i].setFocusable(false);
+            botoes[i].addActionListener(this);
+
+        }
 
         painel_titulo.add(caixaDeTexto);
         quadro.add(painel_titulo, BorderLayout.NORTH);
@@ -56,6 +66,20 @@ public class JogoDaVelha implements ActionListener{
 
     //metodo aleatorio para decidir quem vai primeiro X ││ O
     public void primeiroTurno(){
+        //Para exibir primeiro o texto do jogo e depois o turno do jogador
+        try{
+        Thread.sleep(2000);
+        } catch (InterruptedException e){
+            e.printStackTrace();
+        }
+
+        if(aleatorio.nextInt(2)==0){
+            turno_player1=true;
+            caixaDeTexto.setText("Turno do X");
+        }else {
+            turno_player1=false;
+            caixaDeTexto.setText("Turno do O");
+        }
 
     }
     //checando condições de vitória
