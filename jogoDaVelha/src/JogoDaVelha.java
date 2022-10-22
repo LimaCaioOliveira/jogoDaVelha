@@ -56,10 +56,34 @@ public class JogoDaVelha implements ActionListener{
         painel_titulo.add(caixaDeTexto);
         quadro.add(painel_titulo, BorderLayout.NORTH);
         quadro.add(painel_botao);
+        primeiroTurno();
 
 
     }
     public void actionPerformed(ActionEvent e){
+
+        for(int i=0; i<9; i++){
+            if (e.getSource()==botoes[i]){
+                if(turno_player1){
+                    if(botoes[i].getText()==""){
+                        botoes[i].setForeground(new Color(255,0,0));
+                        botoes[i].setText("X");
+                        turno_player1=false;
+                        caixaDeTexto.setText("Turno do O");
+                        checagem();
+                    }
+                }
+                else{
+                    if(botoes[i].getText()==""){
+                        botoes[i].setForeground(new Color(0,0,255));
+                        botoes[i].setText("O");
+                        turno_player1=true;
+                        caixaDeTexto.setText("Turno do X");
+                        checagem();
+                    }
+                }
+            }
+        }
 
 
     }
@@ -68,7 +92,7 @@ public class JogoDaVelha implements ActionListener{
     public void primeiroTurno(){
         //Para exibir primeiro o texto do jogo e depois o turno do jogador
         try{
-        Thread.sleep(2000);
+            Thread.sleep(2000);
         } catch (InterruptedException e){
             e.printStackTrace();
         }
@@ -84,16 +108,151 @@ public class JogoDaVelha implements ActionListener{
     }
     //checando condições de vitória
     public void checagem(){
+        //checando se X vence verificando as combinações possiveis de 3 em 3 de 0 a 8
+        if(
+                (botoes[0].getText()=="X") &&
+                (botoes[1].getText()=="X") &&
+                (botoes[2].getText()=="X") 
+                ){
+            xVence(0,1,2);
+        }
+        if(
+                (botoes[3].getText()=="X") &&
+                (botoes[4].getText()=="X") &&
+                (botoes[5].getText()=="X") 
+                ){
+            xVence(3,4,5);
+        }
+        if(
+                (botoes[6].getText()=="X") &&
+                (botoes[7].getText()=="X") &&
+                (botoes[8].getText()=="X") 
+                ){
+            xVence(6,7,8);
+        }
+        if(
+                (botoes[0].getText()=="X") &&
+                (botoes[3].getText()=="X") &&
+                (botoes[6].getText()=="X") 
+                ){
+            xVence(0,3,6);
+        }
+        if(
+                (botoes[1].getText()=="X") &&
+                (botoes[4].getText()=="X") &&
+                (botoes[7].getText()=="X") 
+                ){
+            xVence(1,4,7);
+        }
+        if(
+                (botoes[2].getText()=="X") &&
+                (botoes[5].getText()=="X") &&
+                (botoes[8].getText()=="X") 
+                ){
+            xVence(2,5,8);
+        }
+        if(
+                (botoes[0].getText()=="X") &&
+                (botoes[4].getText()=="X") &&
+                (botoes[8].getText()=="X") 
+                ){
+            xVence(0,4,8);
+        }
+        if(
+                (botoes[2].getText()=="X") &&
+                (botoes[4].getText()=="X") &&
+                (botoes[6].getText()=="X") 
+                ){
+            xVence(2,4,6);
+        }
+    
 
+        //checando se O vence
+        if(
+                (botoes[0].getText()=="O") &&
+                (botoes[1].getText()=="O") &&
+                (botoes[2].getText()=="O") 
+                ){
+            oVence(0,1,2);
+        }
+        if(
+                (botoes[3].getText()=="O") &&
+                (botoes[4].getText()=="O") &&
+                (botoes[5].getText()=="O") 
+                ){
+            oVence(3,4,5);
+        }
+        if(
+                (botoes[6].getText()=="O") &&
+                (botoes[7].getText()=="O") &&
+                (botoes[8].getText()=="O") 
+                ){
+            oVence(6,7,8);
+        }
+        if(
+                (botoes[0].getText()=="O") &&
+                (botoes[3].getText()=="O") &&
+                (botoes[6].getText()=="O") 
+                ){
+            oVence(0,3,6);
+        }
+        if(
+                (botoes[1].getText()=="O") &&
+                (botoes[4].getText()=="O") &&
+                (botoes[7].getText()=="O") 
+                ){
+            oVence(1,4,7);
+        }
+        if(
+                (botoes[2].getText()=="O") &&
+                (botoes[5].getText()=="O") &&
+                (botoes[8].getText()=="O") 
+                ){
+            oVence(2,5,8);
+        }
+        if(
+                (botoes[0].getText()=="O") &&
+                (botoes[4].getText()=="O") &&
+                (botoes[8].getText()=="O") 
+                ){
+            oVence(0,4,8);
+        }
+        if(
+                (botoes[2].getText()=="O") &&
+                (botoes[4].getText()=="O") &&
+                (botoes[6].getText()=="O") 
+                ){
+            oVence(2,4,6);
+        }
     }
+
+
+    
 
     //checando vitória de X
     public void xVence(int a, int b, int c){
+        botoes[a].setBackground(Color.GREEN);
+        botoes[b].setBackground(Color.GREEN);
+        botoes[c].setBackground(Color.GREEN);
+
+        for (int i=0; i<9; i++){
+            botoes[i].setEnabled(false);
+        }
+        caixaDeTexto.setText("Vitória do X");
 
     }
     //checando viótia de O
     public void oVence(int a, int b, int c){
+        botoes[a].setBackground(Color.GREEN);
+        botoes[b].setBackground(Color.GREEN);
+        botoes[c].setBackground(Color.GREEN);
+
+        for (int i=0; i<9; i++){
+            botoes[i].setEnabled(false);
+        }
+        caixaDeTexto.setText("Vitória do O");
 
     }
-
 }
+
+
